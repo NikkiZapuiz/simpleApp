@@ -1,3 +1,4 @@
+//array
 const questionAndAnswer = [
     {
         question: 'What is the result of the following expression: 10 + "5"?',
@@ -33,40 +34,53 @@ let currentQuestionIndex = 0;
 let score = 0;
 
 const showQuestion = () => {
-
+            //checks questions avail /condition what question to show
         if (currentQuestionIndex < questionAndAnswer.length) {
             questionElement.textContent = questionAndAnswer[currentQuestionIndex].question;
+                // style for questions
             questionElement.style.fontWeight = 'bold';
             questionElement.style.fontSize = 'large';
 
+            // if all questions are done 
         } else {
             questionElement.textContent = "Congratulations!";
         }
 
-        
+            // hide question when submit
         answerElement.value = "";
 
 };
  //initial call to start 
 showQuestion();
+
     //button onclick function
 const submitAnswer = () => {
+    
+        //user answer reference from input html
     const userAnswer = answerElement.value
+        //answer from array
     const correctAnswer = questionAndAnswer[currentQuestionIndex].answer
-
+        //condition for answer vs. user input
     if (userAnswer === correctAnswer) {
         resultElement.textContent = "Correct!";
+        //add score if correct
         score++;
+        // style if correct
         resultElement.style.color = 'green';
         scoreElement.style.color = 'green';
     } else {
         resultElement.textContent = "Wrong!";
+         //style if wrong
         resultElement.style.color = 'Red';
         scoreElement.style.color = 'gray';
     }
         
+    //add index to flash next question
     currentQuestionIndex++;
+
+    //display score
     scoreElement.textContent = `Score: ${score}`;
+        //2nd call to go back on the first function
     showQuestion();
 };
 
