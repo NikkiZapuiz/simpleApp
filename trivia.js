@@ -30,6 +30,7 @@ const answerElement = document.getElementById("answer");
 const resultElement = document.getElementById("result");
 const scoreElement = document.getElementById("score");
 
+
 let currentQuestionIndex = 0;
 let score = 0;
 
@@ -46,7 +47,7 @@ const showQuestion = () => {
             questionElement.textContent = "Congratulations!";
         }
 
-            // hide question when submit
+            // hide answe when submit
         answerElement.value = "";
 
 };
@@ -57,7 +58,7 @@ showQuestion();
 const submitAnswer = () => {
     
         //user answer reference from input html
-    const userAnswer = answerElement.value
+    const userAnswer = answerElement.value.toLocaleLowerCase();
         //answer from array
     const correctAnswer = questionAndAnswer[currentQuestionIndex].answer
         //condition for answer vs. user input
